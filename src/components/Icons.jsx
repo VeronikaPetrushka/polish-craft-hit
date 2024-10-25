@@ -1,19 +1,35 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
-const Icons = ({ type }) => {
+const Icons = ({ type, active }) => {
 
   let imageSource;
-  let iconStyle = styles.icon;
+  let iconStyle = [styles.icon];
 
   switch (type) {
+    case 'home':
+      imageSource = require('../assets/panel/home.png');
+      active && iconStyle.push(styles.active);
+      break;
+    case 'arts':
+      imageSource = require('../assets/panel/arts.png');
+      active && iconStyle.push(styles.active);
+      break;
+    case 'legends':
+      imageSource = require('../assets/panel/legends.png');
+      active && iconStyle.push(styles.active);
+      break;
+    case 'places':
+      imageSource = require('../assets/panel/sights.png');
+      active && iconStyle.push(styles.active);
+      break;
     case 'close':
       imageSource = require('../assets/common/close.png');
-      iconStyle = styles.closeIcon;
+      iconStyle.push(styles.closeIcon);
       break;
     case 'back':
       imageSource = require('../assets/common/go-back.png');
-      iconStyle = styles.backIcon;
+      iconStyle.push(styles.backIcon);
       break;
     case 'folder':
       imageSource = require('../assets/common/folder.png');
@@ -26,7 +42,7 @@ const Icons = ({ type }) => {
       break;
     case 'plus':
       imageSource = require('../assets/common/plus.png');
-      iconStyle = styles.backIcon;
+      iconStyle.push(styles.backIcon);
       break;
   }
 
@@ -44,17 +60,23 @@ const styles = StyleSheet.create({
     height: '100%',
     objectFit: 'cover'
   },
+  active: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    tintColor: '#e1251b',
+  },
   closeIcon: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    tintColor: '#8b7e56',
+    tintColor: '#e1251b',
   },
   backIcon: {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    tintColor: '#f9a500',
+    tintColor: '#e1251b',
   },
 });
 

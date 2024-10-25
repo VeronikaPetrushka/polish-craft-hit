@@ -93,11 +93,6 @@ const FolderDetail = ({ folder }) => {
     );
 
     return (
-        <ImageBackground
-        source={require('../assets/background/home2.png')}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      >
         <View style={styles.container}>
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.goBackButton}>
                 <Icons type={'back'} />
@@ -119,7 +114,6 @@ const FolderDetail = ({ folder }) => {
                 <Text style={styles.noImagesText}>No images in this folder.</Text>
             )}
         </View>
-        </ImageBackground>
     );
 };
 

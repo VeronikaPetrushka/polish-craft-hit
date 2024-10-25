@@ -114,11 +114,6 @@ const Folders = () => {
     );
 
     return (
-        <ImageBackground
-        source={require('../assets/background/home2.png')}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      >
         <View style={styles.container}>
             <TouchableOpacity style={styles.goBackIcon} onPress={handleGoBack}>
                 <Icons type={'back'} />
@@ -162,7 +157,6 @@ const Folders = () => {
                 </View>
             </Modal>
         </View>
-        </ImageBackground>
     );
 };
 
