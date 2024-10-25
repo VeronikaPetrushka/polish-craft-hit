@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions} from "react-native"
 import { useNavigation } from '@react-navigation/native';
-import { MusicProvider } from '../constants/music';
-import MusicPlayer from './MusicPlayer';
+// import { MusicProvider } from '../constants/music';
+// import MusicPlayer from './MusicPlayer';
 import AboutModal from './AboutModal';
 import SettingsModal from './SettingsModal';
 
