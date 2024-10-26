@@ -8,7 +8,7 @@ import UserProfile from './UserProfile';
 import AboutModal from './AboutModal';
 import SettingsModal from './SettingsModal';
 
-const { height, width } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const Home = () => {
     const navigation = useNavigation();

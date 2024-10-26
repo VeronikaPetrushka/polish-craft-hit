@@ -71,6 +71,9 @@ const SettingsModal = ({ visible, onClose }) => {
         try {
             await AsyncStorage.setItem('userProfile', "");
             await AsyncStorage.removeItem('uploadedImage');
+            await AsyncStorage.removeItem('nextGameTime');
+            await AsyncStorage.removeItem('currentGameIndex');
+            await AsyncStorage.removeItem('progress');
 
             setTotalBalance(0);
             setShowResetConfirmation(false);

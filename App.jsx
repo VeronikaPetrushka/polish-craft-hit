@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import FoldersScreen from './src/screens/FoldersScreen';
 import FolderDetailsScreen from './src/screens/FolderDetailsScreen';
+import DailyGameScreen from './src/screens/DailyGameScreen';
 
 enableScreens();
 
@@ -19,6 +20,11 @@ const App = () => {
                         <Stack.Screen 
                             name="HomeScreen" 
                             component={HomeScreen} 
+                            options={{ headerShown: false }} 
+                        />
+                        <Stack.Screen 
+                            name="DailyGameScreen" 
+                            component={DailyGameScreen} 
                             options={{ headerShown: false }} 
                         />
                         <Stack.Screen 
