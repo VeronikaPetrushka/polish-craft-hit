@@ -1,22 +1,81 @@
-import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions} from "react-native"
+import React, { useState, useEffect } from 'react'
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image} from "react-native"
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-// import { MusicProvider } from '../constants/music';
-// import MusicPlayer from './MusicPlayer';
+import { MusicProvider } from '../constants/music';
+import MusicPlayer from './MusicPlayer';
+import UserProfile from './UserProfile';
 import AboutModal from './AboutModal';
 import SettingsModal from './SettingsModal';
 
-const { height } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 const Home = () => {
     const navigation = useNavigation();
     const [aboutModalVisible, setAboutModalVisible] = useState(false);
     const [settingsModalVisible, setSettingsModalVisible] = useState(false);
 
+    const [userProfileModalVisible, setUserProfileModalVisible] = useState(false);
+    const [uploadedImage, setUploadedImage] = useState({ uri: Image.resolveAssetSource(require('../assets/avatar/user.png')).uri });
+    const [userName, setUserName] = useState('');  
+
+    const loadAvatar = async () => {
+        try {
+          const storedImageUri = await AsyncStorage.getItem('uploadedImage');
+            
+          if (storedImageUri) {
+            setUploadedImage(({ uri: storedImageUri }));
+        } else {
+            setUploadedImage({ uri: Image.resolveAssetSource(require('../assets/avatar/user.png')).uri });
+        }
+        } catch (error) {
+          console.error('Error loading avatar:', error);
+        }
+      };
+    
+      const loadName = async () => {
+        try {
+          const storedName = await AsyncStorage.getItem('userProfile');
+          setUserName(storedName || '');
+        } catch (error) {
+          console.error('Error loading name:', error);
+        }
+      };
+    
+      useEffect(() => {
+        loadAvatar();
+        loadName();
+      }, []);
+
+      const closeUserProfileModal = async () => {
+        setUserProfileModalVisible(false);
+        await loadAvatar();
+        await loadName();
+    };
+
+    const closeSettingsModal = async () => {
+        setSettingsModalVisible(false);
+        setUploadedImage({ uri: Image.resolveAssetSource(require('../assets/avatar/user.png')).uri });
+        await loadAvatar();
+        await loadName();
+    };
+
+
     return(
-        // <MusicProvider>
-        // <MusicPlayer />
+        <MusicProvider>
+        <MusicPlayer />
         <View style={styles.container}>
+
+            <TouchableOpacity style={styles.userContainer} onPress={() => setUserProfileModalVisible(true)}>
+                <View style={styles.imageContainer}>
+                    <Image 
+                        source={uploadedImage} 
+                        style={styles.avatarImage}
+                    />
+                </View>
+                    <Text style={styles.name}>{userName || "User"}</Text>
+            </TouchableOpacity>
+
             <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('DailyGameScreen')}>
                 <Text style={styles.btnTxt}>Daily game</Text>
@@ -34,11 +93,12 @@ const Home = () => {
                 <Text style={styles.btnTxt}>Folders</Text>
             </TouchableOpacity>
 
+            <UserProfile visible={userProfileModalVisible} onClose={closeUserProfileModal}/>
             <AboutModal visible={aboutModalVisible} onClose={() => setAboutModalVisible(false)}/>
-            <SettingsModal visible={settingsModalVisible} onClose={() => setSettingsModalVisible(false)}/>
+            <SettingsModal visible={settingsModalVisible} onClose={closeSettingsModal}/>
             </View>
         </View>
-        // </MusicProvider>
+        </MusicProvider>
     )
 };
 
@@ -47,8 +107,41 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         padding: 30,
+        paddingTop: height * 0.07
+    },
+
+    userContainer: {
+        alignItems: 'center',
+        padding: 15,
+        borderRadius: 20,
+        borderColor: '#e1251b',
+        borderWidth: 2,
+        zIndex: 10,
+        marginBottom: 50
+    },
+
+    imageContainer: {
+        padding: 0,
+        width: height * 0.2,
+        height: height * 0.2,
+        alignItems: 'center',
+        borderRadius: 100,
+        overflow: 'hidden',
+        marginBottom: 25,
+    },
+
+    avatarImage: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover'
+    },
+
+    name: {
+        fontSize: 22,
+        fontWeight: '600',
+        color: '#817a6e'
     },
 
     btnContainer: {

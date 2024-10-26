@@ -5,7 +5,7 @@ import { useMusic } from '../constants/music.js';
 import Icons from './Icons';
 
 const SettingsModal = ({ visible, onClose }) => {
-    const { isPlaying, togglePlay } = useState(false);
+    const { isPlaying, togglePlay } = useMusic();
     const [totalBalance, setTotalBalance] = useState(0);
     const [showResetConfirmation, setShowResetConfirmation] = useState(false);
     const [vibrationEnabled, setVibrationEnabled] = useState(true);
@@ -67,29 +67,10 @@ const SettingsModal = ({ visible, onClose }) => {
         }
     };
 
-    const resetDailyBonus = async () => {
-        try {
-            const currentTime = Math.floor(Date.now() / 1000);
-            await AsyncStorage.setItem('lastBonusShown', currentTime.toString());
-        } catch (error) {
-            console.error('Error resetting daily bonus:', error);
-        }
-    };
-
     const handleReset = async () => {
         try {
             await AsyncStorage.setItem('userProfile', "");
-            await AsyncStorage.setItem('userAvatar', avatars[0].id);
             await AsyncStorage.removeItem('uploadedImage');
-
-            await AsyncStorage.removeItem('totalScore');
-            await AsyncStorage.removeItem('hintsAmount');
-            await AsyncStorage.removeItem('timeAmount');
-            await AsyncStorage.removeItem('diaryEntries');
-            await AsyncStorage.removeItem('calendarEvents');
-            await AsyncStorage.removeItem('userRecipes');
-
-            await resetDailyBonus();
 
             setTotalBalance(0);
             setShowResetConfirmation(false);
@@ -120,10 +101,10 @@ const SettingsModal = ({ visible, onClose }) => {
                     {showResetConfirmation ? (
                         <>
                             <Text style={styles.confirmationText}>
-                                Are you sure you want to reset your progress? It will reset your account, score, diaries, calendar events, and your recipes!
+                                Are you sure you want to reset your progress? It will reset your account!
                             </Text>
                             <TouchableOpacity style={styles.resetBtn} onPress={handleReset}>
-                                <Text style={styles.btnText}>Reset</Text>
+                                <Text style={styles.resetBtnText}>Reset</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.cancelReset} onPress={() => setShowResetConfirmation(false)}>
                                 <Text style={styles.btnText}>Close</Text>
@@ -162,7 +143,7 @@ const SettingsModal = ({ visible, onClose }) => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.resetBtn} onPress={() => setShowResetConfirmation(true)}>
-                                <Text style={styles.btnText}>Reset</Text>
+                                <Text style={styles.resetBtnText}>Reset</Text>
                             </TouchableOpacity>
                         </>
                     )}
@@ -254,7 +235,7 @@ const styles = StyleSheet.create({
     },
     shareBtn: {
         width: '100%',
-        backgroundColor: '#305b75',
+        backgroundColor: '#e1251b',
         borderRadius: 15,
         padding: 15,
         alignItems: 'center',
@@ -265,15 +246,22 @@ const styles = StyleSheet.create({
     btnText: {
         fontSize: 19,
         fontWeight: '500',
-        color: 'white',
+        color: '#fff',
     },
     resetBtn: {
         width: '100%',
-        backgroundColor: '#203d4e',
+        backgroundColor: 'transparent',
+        borderWidth: 1,
+        borderColor: '#e1251b',
         borderRadius: 15,
         padding: 15,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    resetBtnText: {
+        color: '#e1251b',
+        fontSize: 19,
+        fontWeight: '500',
     },
     confirmationText: {
         fontSize: 20,
