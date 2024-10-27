@@ -6,6 +6,8 @@ import HomeScreen from './src/screens/HomeScreen';
 import FoldersScreen from './src/screens/FoldersScreen';
 import FolderDetailsScreen from './src/screens/FolderDetailsScreen';
 import DailyGameScreen from './src/screens/DailyGameScreen';
+import ArtsScreen from './src/screens/ArtsScreen';
+import QuizScreen from './src/screens/QuizScreen';
 
 enableScreens();
 
@@ -35,6 +37,16 @@ const App = () => {
                         <Stack.Screen 
                             name="FolderDetailsScreen" 
                             component={FolderDetailsScreen} 
+                            options={{ headerShown: false }} 
+                        />
+                        <Stack.Screen 
+                            name="ArtsScreen" 
+                            component={ArtsScreen} 
+                            options={{ headerShown: false }} 
+                        />
+                        <Stack.Screen 
+                            name="QuizScreen" 
+                            component={QuizScreen} 
                             options={{ headerShown: false }} 
                         />
                     </Stack.Navigator>

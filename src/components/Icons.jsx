@@ -53,6 +53,10 @@ const Icons = ({ type, active }) => {
     case 'sad':
       imageSource = require('../assets/daily/sad.png');
       break;
+    case 'arrow':
+      imageSource = require('../assets/arts/arrow.png');
+      iconStyle.push(styles.arrowIcon);
+      break;
   }
 
   return (
@@ -87,6 +91,12 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
     tintColor: '#e1251b',
   },
+  arrowIcon: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    tintColor: '#434929',
+  }
 });
 
 export default Icons;
