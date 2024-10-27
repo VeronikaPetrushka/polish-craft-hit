@@ -204,6 +204,33 @@ const arts = [
                 ],
                 answer: "Decorative vases"
             }
+        ],
+        museum: [
+            {
+                name: 'Ceramic Mug from Białobrzegi',
+                characteristic: 'This mug is a vibrant example of traditional Polish faience from the 18th century, produced in Białobrzegi. It is adorned with white glaze and blue ornaments that reflect popular folk motifs: flowers, vines, and wavy lines. The item holds significant historical value, as similar pieces were part of the daily life of both wealthy and ordinary families.',    
+                image: require('../assets/museum/ceramics/1.png')
+            },
+            {
+                name: 'Clay Milk Jug from Łowicz',
+                characteristic: 'This jug was made in Łowicz, a region known for its rich folk culture. Its decoration features stylized floral motifs typical of the 19th century. Jugs of this type were used for storing milk and other dairy products, and thanks to natural materials, the milk remained fresh for a long time. This demonstrates the functionality and aesthetic appeal of ceramics.',
+                image: require('../assets/museum/ceramics/2.png')
+            },
+            {
+                name: 'Porcelain Vase from Wrocław',
+                characteristic: 'This porcelain vase comes from the Wrocław manufactory of the late 18th century, renowned for its craftsmanship in producing delicate items. The vase is adorned with exquisite floral ornaments and gilding, making it a symbol of wealth and refined taste. The vase showcases the influence of European porcelain on Polish decorative arts.',
+                image: require('../assets/museum/ceramics/3.png')
+            },
+            {
+                name: 'Bowl from Strzemieszy',
+                characteristic: 'Made in Strzemieszyce, a center of Polish faience industry in the 19th century. This bowl features a rich green glaze and a decorative style typical of the region, combining simple lines and floral motifs. It was used for serving food as well as for storing products, highlighting its multifunctionality.',
+                image: require('../assets/museum/ceramics/4.png')
+            },
+            {
+                name: 'Figurine of St. John of Nepomuk',
+                characteristic: 'This ceramic figurine of St. John of Nepomuk, protector against disasters and floods, was often found in homes and chapels. The figurine was created in a folk style, emphasizing its simplicity and closeness to the beliefs of local residents. The hand-painted bright colors add artistic value to the figurine.',
+                image: require('../assets/museum/ceramics/5.png')
+            }
         ]   
     },
     {
@@ -410,6 +437,33 @@ const arts = [
                     "Szkakuni"
                 ],
                 answer: "Ludki"
+            }
+        ],
+        museum: [
+            {
+                name: 'Wooden Dowry Chest from Podhale',
+                characteristic: 'A large carved chest made of oak, used for storing the dowry of young girls before marriage. Ornamented with traditional floral motifs symbolizing fertility and abundance. The chest was part of the wedding ceremony and an important item in home decor.',
+                image: require('../assets/museum/wood/1.png')
+            },
+            {
+                name: 'Wooden Angel Doll from Lublin',
+                characteristic: 'The angel doll is made of linden wood and painted with colorful folk patterns. It was used during Christmas as a household amulet and a symbol of peace. The doll is an example of a unique tradition of Christmas decoration common in the eastern regions of Poland.',
+                image: require('../assets/museum/wood/2.png')
+            },
+            {
+                name: 'Wooden Table from Subcarpathia',
+                characteristic: 'A massive table made of oak, which was a central element in rural homes. The table is decorated with fine carvings featuring plant motifs, reflecting the craftsmanship of local carpenters. It was used as a dining and work table, symbolizing the importance of family gatherings and labor in Polish traditions.',
+                image: require('../assets/museum/wood/3.png')
+            },
+            {
+                name: 'Carved Sculpture of a Saint from Krosno',
+                characteristic: 'A wooden sculpture from Krosno depicting one of the popular saints, such as St. George or St. Mary. Made in the style of folk sacred art using natural lacquer. Carved statues were often placed in home and church chapels for protection and blessing.',
+                image: require('../assets/museum/wood/4.png')
+            },
+            {
+                name: 'Wooden Cross from Zakopane',
+                characteristic: 'This cross is an example of the famous Zakopane style of wood carving, combining Hutsul and Polish elements. The cross is made of dark wood and decorated with geometric ornaments. In Polish homes, such crosses were symbols of faith and spiritual protection.',
+                image: require('../assets/museum/wood/5.png')
             }
         ]
     },
@@ -618,6 +672,33 @@ const arts = [
                 ],
                 answer: "Very often, especially in pendants and bracelets"
             }
+        ],
+        museum: [
+            {
+                name: 'Amber Pendant from Pomerania',
+                characteristic: 'A pendant featuring a large piece of amber containing an inclusion of ancient insects, making it unique. Crafted in the 19th century, this pendant had protective significance, as it was believed that amber protects against evil spirits and brings health. The piece showcases the high craftsmanship of amber artisans in Pomerania.',
+                image: require('../assets/museum/amber/1.png')
+            },
+            {
+                name: 'Amber Jewelry from Chełm',
+                characteristic: 'Earrings and bracelet made from transparent and pressed amber. Their smooth surface and rich color make these accessories a symbol of luxury. Such items were often given to young girls during engagements, as amber was associated with eternity and fidelity.',
+                image: require('../assets/museum/amber/2.png')
+            },
+            {
+                name: 'Amber Jewelry Box from Gdańsk',
+                characteristic: 'A luxurious jewelry box made in the workshops of Gdańsk, covered with thin amber plates. Each plate was carefully selected for color and transparency, giving the box a vibrant appearance. It was used for storing jewelry and other valuable items.',
+                image: require('../assets/museum/amber/3.png')
+            },
+            {
+                name: 'Amber Bear Figurine from Warmia',
+                characteristic: 'This figurine is a rare example of amber carving in the shape of an animal. The bear, symbolizing strength and endurance, was a common motif in the folk art of Warmia. The figurine also highlights the natural beauty of amber and its plastic possibilities.',
+                image: require('../assets/museum/amber/4.png')
+            },
+            {
+                name: 'Amber Hair Comb from Kashubia',
+                characteristic: 'A hair comb carved from a solid piece of amber was an important part of women`s accessories. In Kashubia, it was used as an amulet, believed to have healing properties for hair and body. The comb also symbolized beauty and prosperity.',
+                image: require('../assets/museum/amber/5.png')
+            }
         ]
     },
     {
@@ -824,6 +905,33 @@ const arts = [
                     "Produced only in monasteries"
                 ],
                 answer: "It united women in communal work"
+            }
+        ],
+        museum: [
+            {
+                name: 'Linen Towel from Podolia',
+                characteristic: 'Made from natural linen, this towel is a beautiful example of Ukrainian-Polish cultural influences in Podolia. Decorated with traditional red-and-white patterns often used in wedding rituals. Linen towels held significant meaning in family ceremonies as a symbol of purity and new beginnings.',
+                image: require('../assets/museum/weaving/1.png')
+            },
+            {
+                name: 'Wool Rug from Podlasie',
+                characteristic: 'This rug, handwoven from coarse wool, features geometric ornaments passed down through generations. It was used as part of the interior or for warmth during cold winter days. The ornaments symbolize the connection between humans and nature, as well as family values.',
+                image: require('../assets/museum/weaving/2.png')
+            },
+            {
+                name: '18th Century Loom',
+                characteristic: 'An original wooden loom that has survived from the 18th century. It was used to create fabrics from wool and linen for household needs. The loom demonstrates the complexity of technologies of that time and the role of weaving in the lives of Polish craftsmen.',
+                image: require('../assets/museum/weaving/3.png')
+            },
+            {
+                name: 'Wedding Belt from Silesia',
+                characteristic: 'A bright belt handwoven using natural dyes, an integral part of wedding attire. The belt is adorned with symbolic motifs - flowers, trees of life, and birds, representing family happiness and fidelity.',
+                image: require('../assets/museum/weaving/4.png')
+            },
+            {
+                name: 'Tablecloth from Łód',
+                characteristic: 'A linen tablecloth made using hand-weaving techniques, it had ceremonial significance. It was used during festive events and family meals. The decoration with fine floral motifs gave it refined elegance and expressed the wealth of home life.',
+                image: require('../assets/museum/weaving/5.png')
             }
         ]
     }

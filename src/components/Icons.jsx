@@ -57,6 +57,18 @@ const Icons = ({ type, active }) => {
       imageSource = require('../assets/arts/arrow.png');
       iconStyle.push(styles.arrowIcon);
       break;
+    case 'clock':
+      imageSource = require('../assets/quiz/clock.png');
+      break;
+    case 'life-gone':
+      imageSource = require('../assets/quiz/life-gone.png');
+      break;
+    case 'life':
+      imageSource = require('../assets/quiz/life.png');
+      break;
+    case 'congrats':
+      imageSource = require('../assets/quiz/congrats.png');
+      break;
   }
 
   return (
@@ -95,7 +107,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    tintColor: '#434929',
+    tintColor: '#e1251b',
+  },
+  lifeIcon: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    tintColor: '#d6d1d0',
   }
 });
 

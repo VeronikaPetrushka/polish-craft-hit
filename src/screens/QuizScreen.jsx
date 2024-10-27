@@ -2,11 +2,15 @@ import { View } from "react-native"
 import Quiz from "../components/Quiz"
 
 const QuizScreen = ({route}) => {
-    const { name, quiz } = route.params;
+    const { name, quiz, museum } = route.params;
 
     return (
         <View style={styles.container}>
-            <Quiz name={name} quiz={quiz} />
+            <Quiz 
+                name={name} 
+                quiz={quiz}
+                museum={museum}
+                 />
         </View>
     )
 }; 

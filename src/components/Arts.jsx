@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text, ImageBackground, ScrollView } from "react-native"
+import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text, ScrollView } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 import arts from "../constants/arts.js";
 import Icons from "./Icons";
@@ -28,7 +28,6 @@ const Arts = () => {
     };
 
     return (
-        <ImageBackground source={require('../assets/back/arts.png')} style={{ flex: 1 }}>
         <View style={styles.container}>
         {isReviewing ? (
                     <View style={styles.reviewContainer}>
@@ -43,7 +42,8 @@ const Arts = () => {
                                     style={styles.quizBtn} 
                                     onPress={() => navigation.navigate('QuizScreen', {
                                         name: arts[currentIndex].name,
-                                        quiz: arts[currentIndex].quiz
+                                        quiz: arts[currentIndex].quiz,
+                                        museum: arts[currentIndex].museum
                                     })}>
                                     <Text style={styles.btnReviewText}>Start quiz</Text>
                                 </TouchableOpacity>
@@ -53,6 +53,7 @@ const Arts = () => {
                 ) : (
                     <>
             <Text style={styles.title}>Choose a room to view Polish crafts</Text>
+            <Text style={styles.artsName}>{arts[currentIndex].name}</Text>
             <View style={styles.doorContainer}>
                 <Image source={require('../assets/arts/door-2.png')} style={styles.doorImg}/>
                 <View style={styles.arrowsContainer}>
@@ -61,7 +62,6 @@ const Arts = () => {
                     </TouchableOpacity>
 
                             <View style={{alignItems: 'center'}}>
-                                <Text style={styles.artsName}>{arts[currentIndex].name}</Text>
                                 <View style={styles.artsImgContainer}>
                                     <Image source={arts[currentIndex].image} style={styles.artsImg}/>
                                 </View>
@@ -78,7 +78,6 @@ const Arts = () => {
             </>
                 )}
             </View>
-        </ImageBackground>
     );
 };
 
@@ -99,17 +98,21 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         height: height * 0.77,
         width: '100%',
-        padding: 15
+        padding: 15,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 5,
     },
     artsReviewName: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#274e13',
+        color: '#660000',
     },
 
     artsHistory: {
         fontSize: 18,
-        color: '#274e13',
+        color: '#660000',
         textAlign: 'center',
         marginVertical: 20,
         paddingHorizontal: 20
@@ -119,16 +122,17 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: height * 0.08,
+        marginBottom: height * 0.06,
         marginTop: height * 0.1,
-        color: '#274e13'
+        color: '#e1251b'
     },
 
     doorContainer: {
         width: width * 0.9,
         height: 400,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: height * -0.02
     },
 
     doorImg: {
@@ -162,8 +166,7 @@ const styles = StyleSheet.create({
     artsName: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#fff',
-        marginBottom: height * 0.06,
+        color: '#990000',
     },
 
     artsImgContainer: {
@@ -186,7 +189,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#434929'
+        backgroundColor: '#e1251b'
     },
 
     btnReviewText: {
@@ -201,7 +204,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#434929'
+        backgroundColor: '#e06666'
     },
 
     quizBtn: {
@@ -210,7 +213,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#5d6b23'
+        backgroundColor: '#cc0000'
     }
 })
 
