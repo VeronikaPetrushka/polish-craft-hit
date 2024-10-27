@@ -1,7 +1,5 @@
-// change from 20s to 24 hours
-
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet, Dimensions, ImageBackground, ScrollView, Button } from 'react-native';
+import { View, Text, TouchableOpacity, Modal, StyleSheet, Dimensions, ImageBackground, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import * as Progress from 'react-native-progress';
@@ -10,7 +8,7 @@ import facts from '../constants/facts.js';
 import Icons from './Icons.jsx';
 
 const { height } = Dimensions.get('window');
-const GAME_INTERVAL = 20 * 1000;
+const GAME_INTERVAL = 60 * 60 * 24 * 1000;
 
 const DailyGame = () => {
   const navigation = useNavigation();
@@ -104,10 +102,12 @@ const DailyGame = () => {
   };
 
   const formatTime = (milliseconds) => {
-    const minutes = Math.floor(milliseconds / (20 * 1000));
-    const seconds = Math.floor((milliseconds % (20 * 1000)) / 1000);
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  };
+    const hours = Math.floor(milliseconds / (60 * 60 * 1000));
+    const minutes = Math.floor((milliseconds % (60 * 60 * 1000)) / (60 * 1000));
+    const seconds = Math.floor((milliseconds % (60 * 1000)) / 1000);
+  
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };  
 
   const resultText = (progress) => {
     if(progress < 50) {
@@ -151,9 +151,6 @@ const DailyGame = () => {
             { text: 'OK', onPress: () => console.log('OK Pressed') }
         ]);
 
-        if (vibrationEnabled) {
-            Vibration.vibrate();
-        }
     } catch (error) {
         console.error('Error resetting daily game:', error);
         Alert.alert('Error', 'There was a problem resetting your daily game. Please try again later.');
@@ -177,7 +174,7 @@ const goBackToTopics = () => {
 };
 
   return (
-    <ImageBackground source={require('../assets/back/back.jpg.webp')} style={{ flex: 1 }}>
+    <ImageBackground source={currentGameIndex >= dailyGame.length ? dailyGame[dailyGame.length - 1].image : dailyGame[currentGameIndex].image} style={{ flex: 1 }}>
       <View style={styles.container}>
       <View style={styles.progressContainer}>
         <Progress.Bar
@@ -215,23 +212,28 @@ const goBackToTopics = () => {
               </View>
             </View>
           ) : (
-            <View style={{ width: '100%', padding: 10, backgroundColor: '#fff', borderRadius: 10 }}>
-              <Text style={styles.timerText}>New daily game will be available in {timer}</Text>
-            </View>
+            <View style={{width: '100%'}}>
+              <View style={{ width: '100%', padding: 10, backgroundColor: '#fff', borderRadius: 10, marginBottom: 30}}>
+                <Text style={styles.timerText}>New daily game will be available in {timer}</Text>
+              </View>
+              <TouchableOpacity style={styles.homeBtn} onPress={() => navigation.goBack('')}>
+                <Text style={styles.blackBtnText}>Home</Text>
+              </TouchableOpacity>
+            </View>        
           )
         ) : (
             <View style={{width: '100%'}}>
                 <View style={{ width: '100%', padding: 10, backgroundColor: '#fff', borderRadius: 10 }}>
                     <Text style={styles.finishText}>Congratulations, you passed the last daily game !</Text>
                 </View>
-                <TouchableOpacity onPress={openFactsModal}>
-                    <Text>Historical facts</Text>
+                <TouchableOpacity style={styles.factsBtn} onPress={openFactsModal}>
+                    <Text style={styles.btnText}>Historical facts</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.goBack('')}>
-                    <Text>Home</Text>
+                <TouchableOpacity style={styles.homeBtn} onPress={() => navigation.goBack('')}>
+                    <Text style={styles.blackBtnText}>Home</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleReset}>
-                    <Text>Reset daily game</Text>
+                <TouchableOpacity style={styles.resetBtn} onPress={handleReset}>
+                    <Text style={styles.btnText}>Reset daily game</Text>
                 </TouchableOpacity>
             </View>
         )}
@@ -243,15 +245,14 @@ const goBackToTopics = () => {
           onRequestClose={closeModal}
         >
           <View style={styles.modalOverlay}>
-            <View style={styles.modalContent}>
+            <View style={[styles.modalContent, {paddingTop: 50}]}>
                 <ScrollView style={{width: '100%'}}>
                 <Text style={styles.resultText}>{selectedResult}</Text>
               <Text style={styles.resultText}>{resultText(progress)}</Text>
-              <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
-                <Text style={styles.closeButtonText}>Close</Text>
-              </TouchableOpacity>
-
                 </ScrollView>
+                <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
+                    <Icons type={'close'}/>
+                </TouchableOpacity>
             </View>
           </View>
         </Modal>
@@ -263,27 +264,31 @@ const goBackToTopics = () => {
                 onRequestClose={() => setFactsModalVisible(false)}
             >
                 <View style={styles.modalOverlay}>
-                    <View style={styles.modalContent}>
+                    <View style={[styles.modalContent, {paddingTop: 50}]}>
                         <ScrollView style={{width: '100%'}}>
                         {!isFactSelected ? (
                             facts.map((fact, index) => (
                                 <TouchableOpacity
                                     key={index}
-                                    style={styles.button}
+                                    style={[styles.button, { backgroundColor: index % 2 === 0 ? '#e1251b' : '#ccc' }]}
                                     onPress={() => selectFact(fact)}
                                 >
-                                    <Text style={styles.buttonText}>{fact.name}</Text>
+                                    <Text style={[styles.buttonText, { color: index % 2 === 0 ? '#fff' : '#000' }]}>{fact.name}</Text>
                                 </TouchableOpacity>
                             ))
                         ) : (
-                            <>
+                            <View style={{width: '100%'}}>
                                 <Text style={styles.modalTitle}>{selectedFact.name}</Text>
                                 <Text style={styles.modalFact}>{selectedFact.fact}</Text>
-                                <Button title="Go Back to Topics" onPress={goBackToTopics} />
-                            </>
+                                <TouchableOpacity style={styles.backArrowIcon} onPress={goBackToTopics}>
+                                    <Icons type={'back-arrow'}/>
+                                </TouchableOpacity>
+                            </View>
                         )}
                         </ScrollView>
-                        <Button title="Close Modal" onPress={() => setFactsModalVisible(false)} />
+                        <TouchableOpacity style={styles.closeButton} onPress={() => setFactsModalVisible(false)}>
+                            <Icons type={'close'}/>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </Modal>
@@ -413,15 +418,16 @@ const styles = StyleSheet.create({
     color: '#000'
   },
 button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#e1251b',
     padding: 10,
     borderRadius: 5,
-    marginVertical: 5,
+    marginVertical: 3,
     width: '100%',
 },
 buttonText: {
     color: '#fff',
     textAlign: 'center',
+    fontSize: 16
 },
 modalTitle: {
     fontSize: 20,
@@ -434,6 +440,57 @@ modalFact: {
     marginBottom: 20,
     textAlign: 'center',
 },
+factsBtn: {
+    width: '100%',
+    padding: 12,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#c79e21',
+    marginBottom: height * 0.01,
+    marginTop: height * 0.07
+},
+homeBtn: {
+    width: '100%',
+    padding: 12,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#e8e9e7',
+    marginBottom: height * 0.01
+},
+resetBtn: {
+    width: '100%',
+    padding: 12,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#e5352c'
+},
+btnText: {
+    color: '#fff',
+    fontSize: 17,
+    fontWeight: 500
+},
+blackBtnText: {
+    color: '#000',
+    fontSize: 17,
+    fontWeight: 500
+},
+closeButton: {
+    padding: 10,
+    width: 42,
+    height: 42,
+    position: 'absolute',
+    top: 10,
+    right: 10,
+},
+backArrowIcon: {
+    width: 70,
+    height: 70,
+    padding: 10,
+    alignSelf: 'center',
+}
 });
 
 export default DailyGame;

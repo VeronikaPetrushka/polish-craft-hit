@@ -19,7 +19,8 @@ const dailyGame = [
                 result: 'Residents’ satisfaction remains neutral 0%. The community feels that not all opinions are considered.',
                 satisfaction: '0'
             }
-        ]
+        ],
+        image: require('../assets/back/krakow.jpeg.webp')
     },
     {
         day: '2',
@@ -41,7 +42,8 @@ const dailyGame = [
                 result: 'Residents’ satisfaction remains neutral 0%. People appreciate your approach but do not feel strong emotions.',
                 satisfaction: '0'
             }
-        ]
+        ],
+        image: require('../assets/back/warsaw.webp')
     },
     {
         day: '3',
@@ -64,7 +66,8 @@ const dailyGame = [
                 satisfaction: '+100'
             },
 
-        ]
+        ],
+        image: require('../assets/back/gdansk.jpg')
     },
     {
         day: '4',
@@ -86,7 +89,8 @@ const dailyGame = [
                 result: ' Residents’ satisfaction decreases by 50%. Many people feel you do not support their right to ownership.',
                 satisfaction: '-50'
             }
-        ]
+        ],
+        image: require('../assets/back/poznan.jpg')
     },
     {
         day: '5',
@@ -108,7 +112,8 @@ const dailyGame = [
                 result: 'Residents’ satisfaction remains neutral 0%. Your approach is seen as an attempt to resolve the conflict but does not evoke strong emotions.',
                 satisfaction: '0'
             }
-        ]
+        ],
+        image: require('../assets/back/wroclaw.jpeg')
     },
     {
         day: '6',
@@ -130,7 +135,8 @@ const dailyGame = [
                 result: 'Residents’ satisfaction increases by 100%. People feel their aspirations for change are recognized.',
                 satisfaction: '+100'
             }
-        ]
+        ],
+        image: require('../assets/back/lublin.jpg')
     },
     {
         day: '7',
@@ -152,7 +158,8 @@ const dailyGame = [
                 result: 'Residents’ satisfaction decreases by 50%. People feel you do not support their right to clean air.',
                 satisfaction: '-50'
             }
-        ]
+        ],
+        image: require('../assets/back/katowice.jpg')
     }
 ];
 

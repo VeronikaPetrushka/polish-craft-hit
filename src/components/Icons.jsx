@@ -44,6 +44,9 @@ const Icons = ({ type, active }) => {
       imageSource = require('../assets/common/plus.png');
       iconStyle.push(styles.backIcon);
       break;
+    case 'back-arrow':
+      imageSource = require('../assets/common/back-arrow.png');
+      break;
     case 'happy':
       imageSource = require('../assets/daily/happy.png');
       break;

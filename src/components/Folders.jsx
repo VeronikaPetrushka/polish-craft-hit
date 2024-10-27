@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: height * 0.03,
-        color: '#e2d6b1'
+        color: '#817a6e'
     },
     folderList: {
         marginTop: 20,
@@ -203,11 +203,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: 150
+        height: 150,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 5,
     },
     folderName: {
         fontSize: 16,
         fontWeight: 'bold',
+        color: '#817a6e'
     },
     folderActions: {
         height: '100%',
@@ -241,6 +246,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 20,
+        color: '#817a6e'
     },
     input: {
         width: '100%',
@@ -249,6 +255,7 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderRadius: 5,
         marginBottom: 20,
+        color: '#817a6e'
     },
     modalButtons: {
         flexDirection: 'row',
@@ -256,9 +263,9 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     modalButton: {
-        backgroundColor: '#f9a500',
+        backgroundColor: '#e1251b',
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 12,
         alignItems: 'center',
         width: '48%',
     },
