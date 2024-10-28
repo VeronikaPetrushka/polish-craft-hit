@@ -81,8 +81,6 @@ const DailyGame = () => {
 
   const handleOptionPress = async (result, satisfaction) => {
     setSelectedResult(result);
-    setModalVisible(true);
-    startNewGameTimer();
 
     let updatedProgress;
     if (progress === 0) {
@@ -94,6 +92,11 @@ const DailyGame = () => {
     
     setProgress(updatedProgress);
     await AsyncStorage.setItem('progress', updatedProgress.toString());
+
+    setTimeout(() => {
+      setModalVisible(true);
+      startNewGameTimer();
+  }, 1500); 
 };
 
   const closeModal = () => {

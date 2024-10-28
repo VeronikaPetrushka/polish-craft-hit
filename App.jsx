@@ -11,6 +11,7 @@ import QuizScreen from './src/screens/QuizScreen';
 import MuseumScreen from './src/screens/MuseumScreen';
 import LegendsScreen from './src/screens/LegendsScreen';
 import PlacesScreen from './src/screens/PlacesScreen';
+import MapScreen from './src/screens/MapScreen';
 
 enableScreens();
 
@@ -65,6 +66,11 @@ const App = () => {
                         <Stack.Screen 
                             name="PlacesScreen" 
                             component={PlacesScreen} 
+                            options={{ headerShown: false }} 
+                        />
+                        <Stack.Screen 
+                            name="MapScreen" 
+                            component={MapScreen} 
                             options={{ headerShown: false }} 
                         />
                     </Stack.Navigator>

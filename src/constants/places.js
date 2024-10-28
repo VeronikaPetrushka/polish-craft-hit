@@ -20,6 +20,9 @@ const places = [
                 name: 'Culture',
                 description: 'Kraków hosts numerous festivals, including the Kraków International Documentary Film Festival and the Night of Museums, where museums are open for free visits at night.'
             }
+        ],
+        coordinates: [
+            { lat: 50.0619474, lng: 19.9368564 },
         ]
     },
     {
@@ -43,6 +46,9 @@ const places = [
                 name: 'Culture',
                 description: 'Warsaw is an active cultural center with numerous theaters, museums, and concert halls. Major festivals, such as the Warsaw Jazz Festival, are held annually.'
             }
+        ],
+        coordinates: [
+            { lat: 52.2319581, lng: 21.0067249},
         ]
     },
     {
@@ -66,6 +72,9 @@ const places = [
                 name: 'Culture',
                 description: 'The city hosts numerous festivals, including the Wrocław Theatre Festival, attracting actors and performers from around the world.'
             }
+        ],
+        coordinates: [
+            { lat: 51.1089776, lng: 17.0326689},
         ]
     },
     {
@@ -89,6 +98,9 @@ const places = [
                 name: 'Culture',
                 description: 'Gdańsk actively hosts cultural events, including art exhibitions and concerts. The city is also known for its gastronomic traditions.'
             }
+        ],
+        coordinates: [
+            { lat: 54.3706858, lng: 18.6129821},
         ]
     },
     {
@@ -112,6 +124,9 @@ const places = [
                 name: 'Culture',
                 description: 'Zakopane is known for its highlander culture. Visitors can taste traditional dishes such as "oscypek" (smoked sheep cheese) and enjoy folk music.'
             }
+        ],
+        coordinates: [
+            { lat: 49.2969114, lng: 19.9504753},
         ]
     },
     {
@@ -135,6 +150,9 @@ const places = [
                 name: 'Culture',
                 description: 'Poznań is an important cultural center that frequently hosts festivals, such as the Poznań Malta Festival, attracting theater and music performers from around the world.'
             }
+        ],
+        coordinates: [
+            { lat: 52.4082663, lng: 16.9335199},
         ]
     },
     {
@@ -158,6 +176,9 @@ const places = [
                 name: 'Culture',
                 description: 'Toruń is famous for its gingerbread, and the city hosts festivals related to this delicacy. It also actively develops cultural initiatives.'
             }
+        ],
+        coordinates: [
+            { lat: 53.0102721, lng: 18.6048094},
         ]
     },
     {
@@ -181,6 +202,9 @@ const places = [
                 name: 'Culture',
                 description: 'Łódź hosts many festivals, such as the Four Cultures Festival, which unites different national traditions.'
             }
+        ],
+        coordinates: [
+            { lat: 51.7687323, lng: 19.4569911},
         ]
     },
     {
@@ -204,6 +228,9 @@ const places = [
                 name: 'Culture',
                 description: 'Sopot is known for hosting music festivals, such as the Sopot Festival, which attracts popular artists.'
             }
+        ],
+        coordinates: [
+            { lat: 54.4447922, lng: 18.5684902},
         ]
     },
     {
@@ -227,6 +254,9 @@ const places = [
                 name: 'Culture',
                 description: 'The city is rapidly developing and hosts various cultural events, contemporary art festivals, and music events.'
             }
+        ],
+        coordinates: [
+            { lat: 50.2598987, lng: 19.0215852},
         ]
     }
 ];

@@ -9,8 +9,8 @@ const MenuPanel = () => {
 
     const handleNavigate = (screen) => {
         setActiveButton(screen);
-        navigation.navigate(screen);
-    };
+        setTimeout(() => navigation.navigate(screen), 0);
+    };    
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {

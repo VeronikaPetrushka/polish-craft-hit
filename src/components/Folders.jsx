@@ -124,12 +124,18 @@ const Folders = () => {
 
             <Text style={styles.title}>Folders</Text>
 
-            <FlatList
-                data={folders}
-                renderItem={renderFolder}
-                keyExtractor={(item) => item.id}
-                style={styles.folderList}
-            />
+            {
+                folders.length > 0 ? (
+                    <FlatList
+                        data={folders}
+                        renderItem={renderFolder}
+                        keyExtractor={(item) => item.id}
+                        style={styles.folderList}
+                    />
+                ) : (
+                    <Text style={styles.noFoldersText}>You have no folders created yet.</Text>
+                )
+            }
 
             <Modal
                 visible={isModalVisible}
@@ -189,6 +195,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: height * 0.03,
+        color: '#817a6e'
+    },
+    noFoldersText: {
+        fontSize: 18,
+        textAlign: 'center',
+        marginTop: 50,
         color: '#817a6e'
     },
     folderList: {

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import places from '../constants/places.js';
 import Icons from './Icons';
 
 const { height, width } = Dimensions.get('window');
 
 const Places = () => {
+    const navigation = useNavigation();
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = () => {
@@ -28,6 +30,10 @@ const Places = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>What to visit ?</Text>
+
+            <TouchableOpacity style={styles.iconMap} onPress={() => navigation.navigate('MapScreen')}>
+                <Icons type={'map'}/>
+            </TouchableOpacity>
 
             <View style={styles.card}>
                 <Image source={places[currentIndex].image} style={styles.image} />
@@ -67,6 +73,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#990000',
         marginBottom: height * 0.03
+    },
+    iconMap: {
+        width: 40,
+        height: 40,
+        position: 'absolute',
+        top: height * 0.06,
+        right: 20,
+        zIndex: 10
     },
     card: {
         width: '95%',

@@ -74,6 +74,7 @@ const SettingsModal = ({ visible, onClose }) => {
             await AsyncStorage.removeItem('nextGameTime');
             await AsyncStorage.removeItem('currentGameIndex');
             await AsyncStorage.removeItem('progress');
+            await AsyncStorage.removeItem('UserFolders');
 
             setTotalBalance(0);
             setShowResetConfirmation(false);
@@ -104,7 +105,7 @@ const SettingsModal = ({ visible, onClose }) => {
                     {showResetConfirmation ? (
                         <>
                             <Text style={styles.confirmationText}>
-                                Are you sure you want to reset your progress? It will reset your account!
+                                Are you sure you want to reset your progress? It will reset your account along with your daily game progress, folders, and its images!
                             </Text>
                             <TouchableOpacity style={styles.resetBtn} onPress={handleReset}>
                                 <Text style={styles.resetBtnText}>Reset</Text>
