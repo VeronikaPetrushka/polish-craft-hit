@@ -48,8 +48,8 @@ const UserProfile = ({ visible, onClose }) => {
   };
 
   const handleSubmit = async () => {
-    if (name.length > 25) {
-      setErrorMessage("Name cannot exceed 25 characters.");
+    if (name.length > 20) {
+      setErrorMessage("Name cannot exceed 20 characters.");
       return;
     }
 

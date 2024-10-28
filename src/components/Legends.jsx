@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Share, Dimensions, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Share, Dimensions, ScrollView, ImageBackground } from "react-native";
 import legends from "../constants/legends.js";
 
 const { height } = Dimensions.get('window');
@@ -54,8 +54,10 @@ const Legends = () => {
     const renderLegendDetails = () => (
         <View style={{width: '100%', marginTop: height * 0.07}}>
             <ScrollView style={{width: '100%'}}>
-            <Text style={styles.legendName}>{selectedLegend.name}</Text>
-            <Text style={styles.legendText}>{selectedLegend.legend}</Text>
+                <View style={styles.legendsTextBox}>
+                    <Text style={styles.legendName}>{selectedLegend.name}</Text>
+                    <Text style={styles.legendText}>{selectedLegend.legend}</Text>
+                </View>
             <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
                 <Text style={styles.shareText}>Share</Text>
             </TouchableOpacity>
@@ -68,6 +70,7 @@ const Legends = () => {
     );
 
     return (
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
             <Text style={styles.title}>Legends</Text>
             {selectedLegend
@@ -76,6 +79,7 @@ const Legends = () => {
                 ? renderLegends()
                 : renderCategories()}
         </View>
+        </ImageBackground>
     );
 };
 
@@ -99,7 +103,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginVertical: 5,
         borderRadius: 12,
-        width: '100%'
+        width: '100%',
+        backgroundColor: '#f9f9f9'
     },
     buttonText: {
         color: "#990000",
@@ -117,6 +122,17 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 16,
         textAlign: "center",
+    },
+    legendsTextBox: {
+        padding: 10,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f9f9f9',
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 5 },
+        shadowRadius: 7,
     },
     legendName: {
         fontSize: 18,

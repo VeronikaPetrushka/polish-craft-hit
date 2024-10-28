@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Modal, Dimensions } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Modal, Dimensions, ImageBackground } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import Icons from "./Icons";
 
@@ -99,6 +99,7 @@ const Quiz = ({ name, quiz, museum }) => {
     }
 
     return (
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
             <Text style={styles.title}>{name}</Text>
 
@@ -115,7 +116,7 @@ const Quiz = ({ name, quiz, museum }) => {
             ) : (
                 <View style={styles.questionContainer}>
 
-                    <View style={{width: '95%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: height * 0.03}}>
+                    <View style={styles.timerBox}>
                     <View style={{alignItems: 'center', flexDirection: 'row'}}>
                         <View style={{width: 40, height: 40, marginRight: 10}}>
                             <Icons type={'clock'}/>
@@ -138,9 +139,11 @@ const Quiz = ({ name, quiz, museum }) => {
                         Question {currentQuestionIndex + 1} of {quiz.length}
                     </Text>
                     
-                    <Text style={styles.question}>
-                        {quiz[currentQuestionIndex].question}
-                    </Text>
+                    <View style={styles.questionBox}>
+                        <Text style={styles.question}>
+                            {quiz[currentQuestionIndex].question}
+                        </Text>
+                    </View>
 
                     {quiz[currentQuestionIndex].options.map((option, index) => {
                         const isSelected = option === selectedOption;
@@ -231,6 +234,7 @@ const Quiz = ({ name, quiz, museum }) => {
                 )
             }
         </View>
+        </ImageBackground>
     );
 };
 
@@ -250,9 +254,20 @@ const styles = StyleSheet.create({
         marginBottom: height * 0.03,
         color: '#990000'
     },
+    timerBox: {
+        width: '95%', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        marginBottom: height * 0.03,
+        shadowColor: '#fff',
+        shadowOpacity: 0.7,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 5,
+    },
     timer: {
         fontSize: 20,
-        color: 'red',
+        color: '#990000',
         fontWeight: 'bold',
     },
     livesContainer: {
@@ -272,10 +287,22 @@ const styles = StyleSheet.create({
         color: '#555',
         marginBottom: 30
     },
+    questionBox: {
+        padding: 12,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#f0f0f0',
+        width: '100%',
+        borderRadius: 10,
+        marginBottom: height * 0.15,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 5,
+    },
     question: {
         fontSize: 18,
         textAlign: 'center',
-        marginBottom: height * 0.15
     },
     optionButton: {
         padding: 12,

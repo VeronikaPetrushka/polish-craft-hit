@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView, ImageBackground } from 'react-native';
 
 const { height } = Dimensions.get('window');
 
@@ -11,6 +11,7 @@ const Museum = ({ name, museum }) => {
     };
 
     return (
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
             <Text style={styles.title}>{name}</Text>
             <ScrollView style={{width: '100%'}}>
@@ -40,6 +41,7 @@ const Museum = ({ name, museum }) => {
             ))}
             </ScrollView>
         </View>
+        </ImageBackground>
     );
 };
 
@@ -50,7 +52,6 @@ const styles = StyleSheet.create({
         paddingTop: height * 0.07,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
     },
     title: {
         fontSize: 26,

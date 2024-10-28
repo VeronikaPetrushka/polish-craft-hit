@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from "react-native"
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image, ImageBackground } from "react-native"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { MusicProvider } from '../constants/music';
@@ -69,6 +69,7 @@ const Home = () => {
     return(
         <MusicProvider>
         <MusicPlayer />
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
 
             <TouchableOpacity style={styles.userContainer} onPress={() => setUserProfileModalVisible(true)}>
@@ -78,7 +79,9 @@ const Home = () => {
                         style={styles.avatarImage}
                     />
                 </View>
-                    <Text style={styles.name}>{userName || "User"}</Text>
+                    <View style={styles.nameBox}>
+                        <Text style={styles.name}>{userName || "User"}</Text>
+                    </View>
             </TouchableOpacity>
 
             <View style={styles.btnContainer}>
@@ -104,6 +107,7 @@ const Home = () => {
             <SettingsModal visible={settingsModalVisible} onClose={closeSettingsModal}/>
             </View>
         </View>
+        </ImageBackground>
         </MusicProvider>
     )
 };
@@ -144,10 +148,21 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
 
+    nameBox: {
+        padding: 5, 
+        borderRadius: 10, 
+        backgroundColor: '#f9f9f9', 
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 5 },
+        shadowRadius: 7,
+    },
+
     name: {
         fontSize: 22,
         fontWeight: '600',
-        color: '#817a6e'
+        color: '#990000',
+        textAlign: 'center'
     },
 
     btnContainer: {
@@ -191,7 +206,7 @@ const styles = StyleSheet.create({
 
     btnTxt: {
         fontSize: 20,
-        color: '#e1251b',
+        color: '#fff',
         fontWeight: '600'
     },
 

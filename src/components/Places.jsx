@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import places from '../constants/places.js';
 import Icons from './Icons';
@@ -28,7 +28,9 @@ const Places = () => {
     );
 
     return (
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
+
             <Text style={styles.title}>What to visit ?</Text>
 
             <TouchableOpacity style={styles.iconMap} onPress={() => navigation.navigate('MapScreen')}>
@@ -56,6 +58,7 @@ const Places = () => {
             </View>
 
         </View>
+        </ImageBackground>
     );
 };
 

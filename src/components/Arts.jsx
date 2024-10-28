@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text, ScrollView } from "react-native"
+import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text, ScrollView, ImageBackground } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 import arts from "../constants/arts.js";
 import Icons from "./Icons";
@@ -28,6 +28,7 @@ const Arts = () => {
     };
 
     return (
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
         {isReviewing ? (
                     <View style={styles.reviewContainer}>
@@ -52,8 +53,12 @@ const Arts = () => {
                     </View>
                 ) : (
                     <>
-            <Text style={styles.title}>Choose a room to view Polish crafts</Text>
-            <Text style={styles.artsName}>{arts[currentIndex].name}</Text>
+                    <View style={styles.titleBox}>
+                        <Text style={styles.title}>Choose a room to view Polish crafts</Text>
+                    </View>
+                    <View style={styles.artsNameBox}>
+                        <Text style={styles.artsName}>{arts[currentIndex].name}</Text>
+                    </View>
             <View style={styles.doorContainer}>
                 <Image source={require('../assets/arts/door-2.png')} style={styles.doorImg}/>
                 <View style={styles.arrowsContainer}>
@@ -78,6 +83,7 @@ const Arts = () => {
             </>
                 )}
             </View>
+        </ImageBackground>
     );
 };
 
@@ -118,12 +124,23 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
 
+    titleBox: {
+        width: '100%', 
+        padding: 10, 
+        borderRadius: 10, 
+        backgroundColor: '#f9f9f9', 
+        marginBottom: height * 0.04, 
+        marginTop: height * 0.1,
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 5 },
+        shadowRadius: 7,
+    },
+
     title: {
         fontSize: 26,
-        fontWeight: 'bold',
+        fontWeight: '800',
         textAlign: 'center',
-        marginBottom: height * 0.06,
-        marginTop: height * 0.1,
         color: '#e1251b'
     },
 
@@ -163,9 +180,20 @@ const styles = StyleSheet.create({
         padding: 10
     },
 
+    artsNameBox: {
+        padding: 5, 
+        paddingHorizontal: 30,
+        borderRadius: 10, 
+        backgroundColor: '#f9f9f9', 
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowOffset: { width: 0, height: 5 },
+        shadowRadius: 7,
+    },
+
     artsName: {
         fontSize: 24,
-        fontWeight: 'bold',
+        fontWeight: '600',
         color: '#990000',
     },
 
