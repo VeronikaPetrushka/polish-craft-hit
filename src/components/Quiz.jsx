@@ -289,7 +289,8 @@ const styles = StyleSheet.create({
     },
     optionText: {
         fontSize: 17,
-        color: '#990000'
+        color: '#990000',
+        textAlign: 'center'
     },
     finishContainer: {
         width: '100%', 
