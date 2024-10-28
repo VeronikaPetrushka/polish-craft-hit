@@ -82,7 +82,7 @@ const Quiz = ({ name, quiz, museum }) => {
     };
 
     useEffect(() => {
-        if (lives > 0 && quizCompleted && correctCount > quiz.length - 2) {
+        if (lives > 0 && quizCompleted && correctCount > quiz.length - 3) {
             setModalHappyVisible(true);
         }
     }, [lives, quizCompleted]);
@@ -206,7 +206,7 @@ const Quiz = ({ name, quiz, museum }) => {
             )}
 
             {
-                correctCount > quiz.length - 2 && quizCompleted && lives > 0 && (
+                correctCount > quiz.length - 3 && quizCompleted && lives > 0 && (
                     <Modal
                     transparent={true}
                     visible={modalHappyVisible}
@@ -219,7 +219,7 @@ const Quiz = ({ name, quiz, museum }) => {
                                 <Icons type={'congrats'}/>
                             </TouchableOpacity>
                             <Text style={styles.modalText}>You have successfully completed the quiz and unlocked our virtual museum of Polish crafts. Now you can enjoy exploring the exhibits that showcase the richness and uniqueness of Polish culture.</Text>
-                                <TouchableOpacity style={styles.btnMuseum} onPress={() => navigation.navigate('MuseumScreen', { name: name, museum: museum })}>
+                                <TouchableOpacity style={styles.btnMuseum} onPress={() => navigation.navigate('MuseumScreen', { name: name, museum: museum }, setModalHappyVisible(false))}>
                                     <Text style={styles.btnMuseumText}>Enter the Museum</Text>
                                 </TouchableOpacity>
                             <TouchableOpacity style={styles.closeButton} onPress={handleModalHappyVisible}>

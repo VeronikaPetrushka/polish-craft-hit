@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { MusicProvider } from '../constants/music';
 import MusicPlayer from './MusicPlayer';
 import UserProfile from './UserProfile';
+import WelcomeModal from './WelcomeModal';
 import AboutModal from './AboutModal';
 import SettingsModal from './SettingsModal';
 
@@ -12,6 +13,7 @@ const { height } = Dimensions.get('window');
 
 const Home = () => {
     const navigation = useNavigation();
+    const [welcomeModalVisible, setWelcomeModalVisible] = useState(true);
     const [aboutModalVisible, setAboutModalVisible] = useState(false);
     const [settingsModalVisible, setSettingsModalVisible] = useState(false);
 
@@ -47,6 +49,10 @@ const Home = () => {
         loadName();
       }, []);
 
+      const closeWelcomeModal = () => {
+        setWelcomeModalVisible(false);
+    }
+
       const closeUserProfileModal = async () => {
         setUserProfileModalVisible(false);
         await loadAvatar();
@@ -59,7 +65,6 @@ const Home = () => {
         await loadAvatar();
         await loadName();
     };
-
 
     return(
         <MusicProvider>
@@ -93,6 +98,7 @@ const Home = () => {
                 <Text style={styles.btnTxt}>Folders</Text>
             </TouchableOpacity>
 
+            <WelcomeModal visible={welcomeModalVisible} onClose={closeWelcomeModal}/>
             <UserProfile visible={userProfileModalVisible} onClose={closeUserProfileModal}/>
             <AboutModal visible={aboutModalVisible} onClose={() => setAboutModalVisible(false)}/>
             <SettingsModal visible={settingsModalVisible} onClose={closeSettingsModal}/>

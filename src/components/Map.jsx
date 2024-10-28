@@ -33,8 +33,8 @@ const Map = () => {
         mapRef.current.animateToRegion({
             latitude: lat,
             longitude: lng,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
+            latitudeDelta: 0.2,
+            longitudeDelta: 0.2,
         }, 1000);
     };
 
@@ -47,15 +47,15 @@ const Map = () => {
                 ref={mapRef}
                 style={styles.map}
                 initialRegion={{
-                    latitude: 50.0619474,
-                    longitude: 19.9368564,
-                    latitudeDelta: 0.05,
-                    longitudeDelta: 0.05,
+                    latitude: 52.215933,
+                    longitude: 19.134422,
+                    latitudeDelta: 0.2,
+                    longitudeDelta: 0.2,
                 }}
             >
                 {places.map((item) => (
                     <Marker
-                        key={item.id}
+                        key={item.city}
                         coordinate={{
                             latitude: item.coordinates[0].lat,
                             longitude: item.coordinates[0].lng,
