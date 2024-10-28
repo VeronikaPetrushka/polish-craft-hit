@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 20,
         marginTop: height * 0.08,
-        color: '#817a6e'
+        color: '#990000'
     },
     goBackButton: {
         width: 60,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         marginTop: 50,
-        color: '#817a6e'
+        color: '#990000'
     },
 });
 

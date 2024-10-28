@@ -30,6 +30,7 @@ const Arts = () => {
     return (
         <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
+        <Text style={styles.title}>Artistic Journey</Text>
         {isReviewing ? (
                     <View style={styles.reviewContainer}>
                         <Text style={styles.artsReviewName}>{arts[currentIndex].name}</Text>
@@ -54,7 +55,7 @@ const Arts = () => {
                 ) : (
                     <>
                     <View style={styles.titleBox}>
-                        <Text style={styles.title}>Choose a room to view Polish crafts</Text>
+                        <Text style={styles.text}>Choose a room to view Polish crafts</Text>
                     </View>
                     <View style={styles.artsNameBox}>
                         <Text style={styles.artsName}>{arts[currentIndex].name}</Text>
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#fff',
         borderRadius: 20,
-        height: height * 0.77,
+        height: height * 0.7,
+        marginTop: height * 0.02,
         width: '100%',
         padding: 15,
         shadowColor: '#000',
@@ -124,20 +126,26 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
 
+    title: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        color: '#990000'
+    },
+
     titleBox: {
         width: '100%', 
         padding: 10, 
         borderRadius: 10, 
         backgroundColor: '#f9f9f9', 
         marginBottom: height * 0.04, 
-        marginTop: height * 0.1,
+        marginTop: height * 0.05,
         shadowColor: '#000',
         shadowOpacity: 0.2,
         shadowOffset: { width: 0, height: 5 },
         shadowRadius: 7,
     },
 
-    title: {
+    text: {
         fontSize: 26,
         fontWeight: '800',
         textAlign: 'center',
@@ -146,7 +154,7 @@ const styles = StyleSheet.create({
 
     doorContainer: {
         width: width * 0.9,
-        height: 400,
+        height: height * 0.4,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: height * -0.02
@@ -164,7 +172,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row',
         position: 'absolute',
-        bottom: -10
+        bottom: -50
     },
 
     leftArrow: {
@@ -189,6 +197,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowOffset: { width: 0, height: 5 },
         shadowRadius: 7,
+        zIndex: 10,
+        marginBottom: height * 0.03
     },
 
     artsName: {
@@ -202,7 +212,7 @@ const styles = StyleSheet.create({
         height: height * 0.12,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: height * 0.1
+        marginBottom: height * 0.06
     },
 
     artsImg: {

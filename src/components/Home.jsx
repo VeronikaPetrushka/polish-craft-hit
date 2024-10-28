@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         borderColor: '#e1251b',
         borderWidth: 2,
         zIndex: 10,
-        marginBottom: 50
+        marginBottom: height * 0.05
     },
 
     imageContainer: {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 100,
         overflow: 'hidden',
-        marginBottom: 25,
+        marginBottom: height * 0.03,
     },
 
     avatarImage: {
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '47%',
-        height: 150,
+        height: height * 0.175,
         borderWidth: 2,
         borderColor: '#e1251b',
         backgroundColor: ('rgba(255, 37, 27, 0.3)'),
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '47%',
-        height: 150,
+        height: height * 0.175,
         borderWidth: 2,
         borderColor: '#e1251b',
         backgroundColor: ('rgba(255, 37, 27, 0.3)'),

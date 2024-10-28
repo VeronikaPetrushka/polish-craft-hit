@@ -6,7 +6,6 @@ import Icons from './Icons';
 
 const SettingsModal = ({ visible, onClose }) => {
     const { isPlaying, togglePlay } = useMusic();
-    const [totalBalance, setTotalBalance] = useState(0);
     const [showResetConfirmation, setShowResetConfirmation] = useState(false);
     const [vibrationEnabled, setVibrationEnabled] = useState(true);
 
@@ -23,21 +22,8 @@ const SettingsModal = ({ visible, onClose }) => {
         };
 
         loadSettings();
-        if (visible) {
-            retrieveBalance();
-        }
-    }, [visible]);
 
-    const retrieveBalance = async () => {
-        try {
-            const balance = await AsyncStorage.getItem('totalScore');
-            if (balance !== null) {
-                setTotalBalance(parseInt(balance, 10));
-            }
-        } catch (error) {
-            console.log('Error retrieving balance:', error);
-        }
-    };
+    }, [visible]);
 
     const handleToggleLoudness = async () => {
         togglePlay();
@@ -57,16 +43,6 @@ const SettingsModal = ({ visible, onClose }) => {
         }
     };
 
-    const handleShare = async () => {
-        try {
-            await Share.share({
-                message: `Look! I have reached ${totalBalance} score in Big Fish!`,
-            });
-        } catch (error) {
-            console.log('Error sharing:', error);
-        }
-    };
-
     const handleReset = async () => {
         try {
             await AsyncStorage.setItem('userProfile', "");
@@ -76,7 +52,6 @@ const SettingsModal = ({ visible, onClose }) => {
             await AsyncStorage.removeItem('progress');
             await AsyncStorage.removeItem('UserFolders');
 
-            setTotalBalance(0);
             setShowResetConfirmation(false);
             onClose();
 
@@ -107,7 +82,7 @@ const SettingsModal = ({ visible, onClose }) => {
                             <Text style={styles.confirmationText}>
                                 Are you sure you want to reset your progress? It will reset your account along with your daily game progress, folders, and its images!
                             </Text>
-                            <TouchableOpacity style={styles.resetBtn} onPress={handleReset}>
+                            <TouchableOpacity style={[styles.resetBtn, {marginTop: 0}]} onPress={handleReset}>
                                 <Text style={styles.resetBtnText}>Reset</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.cancelReset} onPress={() => setShowResetConfirmation(false)}>
@@ -142,10 +117,6 @@ const SettingsModal = ({ visible, onClose }) => {
                                 </TouchableOpacity>
                             </View>
 
-                            <TouchableOpacity style={styles.shareBtn} onPress={handleShare}>
-                                <Text style={styles.btnText}>Share</Text>
-                            </TouchableOpacity>
-
                             <TouchableOpacity style={styles.resetBtn} onPress={() => setShowResetConfirmation(true)}>
                                 <Text style={styles.resetBtnText}>Reset</Text>
                             </TouchableOpacity>
@@ -168,7 +139,6 @@ const styles = StyleSheet.create({
     },
     modalContent: {
         width: '90%',
-        height: '60%',
         padding: 20,
         backgroundColor: 'white',
         borderRadius: 15,
@@ -261,6 +231,7 @@ const styles = StyleSheet.create({
         padding: 15,
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 50
     },
     resetBtnText: {
         color: '#e1251b',
@@ -270,7 +241,7 @@ const styles = StyleSheet.create({
     confirmationText: {
         fontSize: 20,
         textAlign: 'center',
-        marginBottom: 100,
+        marginBottom: 60,
     },
     cancelReset: {
         width: '100%',
@@ -279,7 +250,7 @@ const styles = StyleSheet.create({
         padding: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 20
+        marginTop: 10
     }
 });
 

@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     },
     card: {
         width: '95%',
-        height: height * 0.7,
+        height: height * 0.68,
         borderRadius: 10,
         backgroundColor: '#fff',
         padding: 15,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row',
         position: 'absolute',
-        top: height * 0.39
+        top: 330
     },
     leftArrow: {
         padding: 10,

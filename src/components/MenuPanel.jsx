@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Dimensions } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import Icons from './Icons';
+
+const { height } = Dimensions.get('window');
 
 const MenuPanel = () => {
     const navigation = useNavigation();
@@ -61,7 +63,7 @@ const MenuPanel = () => {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        height: 100,
+        height: height * 0.12,
         justifyContent: "space-around",
         alignItems: "center",
         paddingHorizontal: 10,

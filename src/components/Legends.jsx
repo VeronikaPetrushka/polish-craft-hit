@@ -35,7 +35,8 @@ const Legends = () => {
     );
 
     const renderLegends = () => (
-        <View style={{width: '100%', marginTop: height * 0.13}}>
+        <View style={{width: '100%', marginTop: height * 0.13, paddingBottom: height * 0.01}}>
+            <ScrollView style={{width: '100%'}}>
             {selectedCategory.legends.map((legend, index) => (
                 <TouchableOpacity
                     key={index}
@@ -48,6 +49,8 @@ const Legends = () => {
             <TouchableOpacity style={styles.goBackButton} onPress={() => setSelectedCategory(null)}>
                 <Text style={styles.goBackText}>Go Back</Text>
             </TouchableOpacity>
+
+            </ScrollView>
         </View>
     );
 

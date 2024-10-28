@@ -114,6 +114,7 @@ const Folders = () => {
     );
 
     return (
+        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
         <View style={styles.container}>
             <TouchableOpacity style={styles.goBackIcon} onPress={handleGoBack}>
                 <Icons type={'back'} />
@@ -163,6 +164,7 @@ const Folders = () => {
                 </View>
             </Modal>
         </View>
+    </ImageBackground>
     );
 };
 
@@ -195,13 +197,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: height * 0.03,
-        color: '#817a6e'
+        color: '#990000'
     },
     noFoldersText: {
         fontSize: 18,
         textAlign: 'center',
         marginTop: 50,
-        color: '#817a6e'
+        color: '#990000'
     },
     folderList: {
         marginTop: 20,

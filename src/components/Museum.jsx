@@ -48,7 +48,7 @@ const Museum = ({ name, museum }) => {
 const styles = StyleSheet.create({
     container: {
         padding: 20,
-        paddingBottom: height * 0.16,
+        paddingBottom: height * 0.18,
         paddingTop: height * 0.07,
         justifyContent: 'center',
         alignItems: 'center',

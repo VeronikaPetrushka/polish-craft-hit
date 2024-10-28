@@ -10,7 +10,7 @@ workflows:
             distribution_type: app_store
             bundle_identifier: com.polishCraftHit.2024
           vars:
-            APP_STORE_APPLE_ID: 6736525803
+            APP_STORE_APPLE_ID: 6737474419
             BUNDLE_ID: "com.polishCraftHit.2024"
             XCODE_WORKSPACE: "PolishCraft.xcworkspace"
             XCODE_SCHEME: "PolishCraft"
