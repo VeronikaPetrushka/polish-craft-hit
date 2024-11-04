@@ -69,7 +69,7 @@ const Home = () => {
     return(
         <MusicProvider>
         <MusicPlayer />
-        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
+        <ImageBackground source={require('../assets/newDiz/loader3.png')} style={{flex: 1}}>
         <View style={styles.container}>
 
             <TouchableOpacity style={styles.userContainer} onPress={() => setUserProfileModalVisible(true)}>

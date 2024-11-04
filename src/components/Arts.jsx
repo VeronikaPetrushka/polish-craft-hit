@@ -28,7 +28,7 @@ const Arts = () => {
     };
 
     return (
-        <ImageBackground source={require('../assets/back/back.webp')} style={{flex: 1}}>
+        <ImageBackground source={require('../assets/newDiz/loader3.png')} style={{flex: 1}}>
         <View style={styles.container}>
         <Text style={styles.title}>Artistic Journey</Text>
         {isReviewing ? (

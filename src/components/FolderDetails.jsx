@@ -123,12 +123,8 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
+        backgroundColor: '#303030'
     },
-    backgroundImage: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-      },
     title: {
         fontSize: 26,
         fontWeight: 'bold',
